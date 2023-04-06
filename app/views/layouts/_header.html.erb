@@ -1,0 +1,63 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #468fbc;">
+    <div class="container mr-0">
+      <!--<a class="navbar-brand text-left" href="/"><%#= image_tag("logo.jpg", width: '30%', height: '20%') %></a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+
+          <!--管理者側がログインしている時-->
+          <% if admin_signed_in? %>
+            <% if request.fullpath.include? "/admin" %>
+              <li class="nav-item text-right">
+                <%#= link_to "レシピ一覧", admin_recipes_path, class: 'btn btn-outline-light mb-3' %>
+              </li>
+              <li class="nav-item">
+                <%#= link_to "会員一覧", admin_users_path, class: 'btn btn-outline-light ml-3 mb-3' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary ml-3' %>
+              </li>
+            <% end %>
+
+            <!--会員側がログインしている時 -->
+          <% elsif user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Top", root_path, class: 'btn btn-outline-light mb-3' %>
+            </li>
+            <li class="nav-item">
+              <%#= link_to "マイページ", my_page_users_path(current_user), class: 'btn btn-outline-light mb-3' %>
+            </li>
+            <li class="nav-item">
+              <%#= link_to "レシピ一覧", recipes_path, class: 'btn btn-outline-light ml-3  mb-3' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light ml-3' %>
+            </li>
+
+            <!--ログインしていない時 -->
+          <% else %>
+         　  <li class="nav-item">
+              <%= link_to "Top", root_path, class: 'btn btn-outline-light mb-3' %>
+            </li>
+            <li class="nav-item">
+              <%#= link_to "About", about_path, class: 'btn btn-outline-light mb-3' %>
+            </li>
+            <li class="nav-item">
+              <%#= link_to "レシピ一覧", recipes_path, class: 'btn btn-outline-light ml-3 mb-3' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-light ml-3 mb-3' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-light ml-3' %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+  </nav>
+</header>
