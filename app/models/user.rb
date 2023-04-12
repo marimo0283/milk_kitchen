@@ -10,4 +10,6 @@ class User < ApplicationRecord
       user.name = "ゲスト"
     end
   end
+
+  has_many :recipes
 end

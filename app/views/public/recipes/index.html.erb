@@ -1,0 +1,18 @@
+<div class="container mt-3 add-font">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="d-flex item-index-h">
+        <h2 class="">みんなのレシピ一覧</h2>
+      </div>
+    <div>
+    <% @recipes.each do |recipe| %>
+      <div class="col-auto">
+        <%= link_to recipe_path(recipe) do %>
+          <%= image_tag recipe.recipe_image(200,300) %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>

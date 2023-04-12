@@ -1,0 +1,52 @@
+<div class="container">
+<div class="row">
+  <div class="col">
+    <h5 class="p-3 mb-2text-dark">レシピを投稿する</h5>
+  </div>
+</div>
+
+<div class="row">
+  <div class="mx-auto col-md-12 mt-3">
+    <%= form_with model: @recipe, url: '/recipes', method: :post, local: true do |f| %>
+        <div class="form-group row">
+          <%= f.label "画像", class: "col-form-label" %>
+          <%= f.file_field :recipe_image, accept: "images/*" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label "料理名", class: "col-form-label" %>
+          <%= f.text_field :name, class: "form-control col-sm-3" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label "説明", class: "col-form-label" %>
+          <%= f.text_area :introduction, class: "form-control col-sm-3" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label "カテゴリー", class: "col-form-label" %>
+          <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください", class: "form-control" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.number_field :serving, in: 1..100, class: "form-control col-sm-1" %>
+          <%= f.label "人分", class: "col-form-label" %>
+        </div>
+
+        <div class="form-group row">
+        <%= f.fields_for :ingredients do |t| %>
+          <%= render "ingredient_fields", f: t %>
+        <% end %>
+        </div>
+
+        <div class="action">
+          <%= link_to_add_association "追加", f, :ingredients, class: "btn btn-outline-info" %>
+        </div>
+
+        <div class="action">
+          <%= f.submit "投稿", class: "btn btn-info" %>
+        </div>
+    <% end %>
+  </div>
+</div>
+</div>

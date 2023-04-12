@@ -9,3 +9,10 @@ Admin.create!(
    email: 'admin@a',
    password: 'admin00'
 )
+
+Category.create!(name: "主食")
+Category.create!(name: "主菜")
+Category.create!(name: "副菜")
+Category.create!(name: "汁物")
+Category.create!(name: "スイーツ")
+Category.create!(name: "その他")

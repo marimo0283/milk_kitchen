@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     post "/users/sign_out", to: "devise/sessions#destroy"
     post "/users/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
+  scope module: :public do
+    resources :recipes, only: [:new, :create, :update, :index, :show, :edit, :destroy]
+  end
 
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
