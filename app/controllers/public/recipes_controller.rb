@@ -2,12 +2,14 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @ingredients = @recipe.ingredients.build
+    @steps = @recipe.steps.build
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
     if @recipe.save
-      redirect to recipe_path(@recipe.id)
+      redirect_to recipe_path(@recipe.id)
     else
       render :new
     end
@@ -19,6 +21,8 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @ingredients = @recipe.ingredients
+    @steps = @recipe.steps
   end
 
   def edit
@@ -34,13 +38,15 @@ class Public::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-
+    redirect_to recipes_path
   end
 
   private
   def recipe_params
     params.require(:recipe).permit(:name, :introduction, :serving, :recipe_image, :category_id,
-    ingredient_attributes: [:id, :recipe_id, :ingredient_name, :amount, :_destroy])
+    ingredients_attributes: [:id, :recipe_id, :ingredient_name, :amount, :_destroy],
+    steps_attributes: [:id, :recipe_id, :step_introduction, :_destroy]
+    )
   end
 
 end

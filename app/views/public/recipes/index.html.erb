@@ -8,7 +8,7 @@
     <% @recipes.each do |recipe| %>
       <div class="col-auto">
         <%= link_to recipe_path(recipe) do %>
-          <%= image_tag recipe.recipe_image(200,300) %>
+          <%= image_tag recipe.recipe_image(300,400) %>
         <% end %>
       </div>
     <% end %>

@@ -5,14 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create!(
-   email: 'admin@a',
-   password: 'admin00'
-)
+# Admin.create!(
+#    email: 'admin@a',
+#    password: 'admin00'
+# )
 
-Category.create!(name: "主食")
-Category.create!(name: "主菜")
-Category.create!(name: "副菜")
-Category.create!(name: "汁物")
-Category.create!(name: "スイーツ")
-Category.create!(name: "その他")
+
+Category.create!([
+   {name: '主食'},
+   {name: '主菜'},
+   {name: '副菜'},
+   {name: '汁物'},
+   {name: 'スイーツ'},
+   {name: 'その他'}
+])
