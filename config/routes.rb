@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'public/homes#top'
+  get '/about' => 'public/homes#about', as: "about"
 
   # 会員用
   devise_for :users, skip: [:passwords], controllers: {
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :recipes, only: [:new, :create, :update, :index, :show, :edit, :destroy]
+    resources :users, only: [:show, :update, :edit]
   end
 
   # 管理者用

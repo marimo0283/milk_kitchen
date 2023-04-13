@@ -69,12 +69,11 @@
           <tbody>
             <%= f.fields_for :steps do |s| %>
             <tr>
-              <td>1</td>
               <td><%= render "step_fields", f: s %></td>
             </tr>
+            <% end %>
           </tbody>
           </table>
-          <% end %>
           <div class="action">
             <tr><%= link_to_add_association "追加", f, :steps, class: "btn btn-outline-info" %></tr>
           </div>

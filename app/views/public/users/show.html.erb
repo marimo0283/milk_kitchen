@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <p><%= @user.introduction %></p>
+</div>
+
+<% @recipes.each do |recipe| %>
+<div>
+  <%= link_to recipe_path(recipe.id) do %>
+    <%= image_tag recipe.recipe_image %>
+    <%= recipe.name %>
+  <% end %>
+  <p><%= image_tag recipe.user.get_profile_image(100,100) %></p>
+  <p><%= recipe.user.name %></p>
+</div>
+<% end %>
+  </div>
+</div>
