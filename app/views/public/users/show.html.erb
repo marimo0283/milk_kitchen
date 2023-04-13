@@ -1,21 +1,35 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-4">
+      <span><%= image_tag @user.get_profile_image(100,100) %></span>
+      <table class="table">
+        <tbody>
+    　    　  <tr></tr>
+            <tr>
+              <th>name</th>
+              <th><%= @user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= @user.introduction %></th>
+            </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <%= link_to "レシピを投稿する", new_recipe_path %>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <p><%= @user.introduction %></p>
-</div>
-
-<% @recipes.each do |recipe| %>
-<div>
-  <%= link_to recipe_path(recipe.id) do %>
-    <%= image_tag recipe.recipe_image %>
-    <%= recipe.name %>
-  <% end %>
-  <p><%= image_tag recipe.user.get_profile_image(100,100) %></p>
-  <p><%= recipe.user.name %></p>
-</div>
-<% end %>
+  <div class="col-md-8">
+    <h4>マイレシピ</h4>
+    <% @recipes.each do |recipe| %>
+    <div>
+      <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.recipe_image, size: "300x200" %>
+        <%= recipe.name %>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 </div>

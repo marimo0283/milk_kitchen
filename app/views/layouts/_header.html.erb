@@ -7,30 +7,30 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav">
 
           <!--管理者側がログインしている時-->
           <% if admin_signed_in? %>
               <li class="nav-item text-right">
-                <%#= link_to "レシピ一覧", recipes_path, class: 'btn btn-outline-light mb-3' %>
+                <%#= link_to "レシピ一覧", recipes_path, class: 'btn btn-outline-light' %>
               </li>
               <li class="nav-item">
-                <%#= link_to "会員一覧", admin_users_path, class: 'btn btn-outline-light ml-3 mb-3' %>
+                <%#= link_to "会員一覧", admin_users_path, class: 'btn btn-outline-light ml-3 %>
               </li>
               <li class="nav-item">
-                <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light mb-3" %>
+                <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light ml-3" %>
               </li>
 
             <!--会員側がログインしている時 -->
           <% elsif user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Top", root_path, class: "btn btn-outline-light mb-3" %>
+              <%= link_to "Top", root_path, class: "btn btn-outline-light" %>
             </li>
             <li class="nav-item">
-              <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-outline-light mb-3" %>
+              <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
-              <%#= link_to "レシピ一覧", recipes_path, class: 'btn btn-outline-light ml-3  mb-3' %>
+              <%#= link_to "レシピ一覧", recipes_path, class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light ml-3" %>
@@ -39,16 +39,16 @@
             <!--ログインしていない時 -->
           <% else %>
          　  <li class="nav-item">
-              <%= link_to "Top", root_path, class: "btn btn-outline-light mb-3" %>
+              <%= link_to "Top", root_path, class: "btn btn-outline-light" %>
             </li>
             <li class="nav-item">
-              <%= link_to "About", about_path, class: 'btn btn-outline-light mb-3' %>
+              <%= link_to "About", about_path, class: 'btn btn-outline-light ml-3' %>
             </li>
             <li class="nav-item">
-              <%#= link_to "レシピ一覧", recipes_path, class: 'btn btn-outline-light ml-3 mb-3' %>
+              <%#= link_to "レシピ一覧", recipes_path, class: 'btn btn-outline-light ml-3' %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light ml-3 mb-3" %>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
               <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light ml-3" %>

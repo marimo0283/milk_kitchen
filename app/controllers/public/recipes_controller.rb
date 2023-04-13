@@ -7,6 +7,7 @@ class Public::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
     if @recipe.save
       redirect_to recipe_path(@recipe.id)
     else
@@ -42,7 +43,7 @@ class Public::RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:name, :introduction, :serving, :recipe_image, :category_id,
+    params.require(:recipe).permit(:name, :introduction, :serving, :recipe_image,
     ingredients_attributes: [:id, :recipe_id, :ingredient_name, :amount, :_destroy],
     steps_attributes: [:id, :recipe_id, :step_introduction, :_destroy]
     )
