@@ -31,14 +31,17 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params)
-    render :edit
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
+    redirect_to user_path(current_user.id)
   end
 
   private

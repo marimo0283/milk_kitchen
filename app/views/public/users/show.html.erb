@@ -1,32 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <span><%= image_tag @user.get_profile_image(100,100) %></span>
+    <div class="col-md-3 py-4">
+      <span class="d-flex justify-content-center"><%= image_tag @user.get_profile_image(200,200) %></span>
       <table class="table">
         <tbody>
             <tr>
-              <th><%= @user.name %></th>
+              <th class="d-flex justify-content-center"><%= @user.name %></th>
             </tr>
             <tr>
-              <th><%= @user.introduction %></th>
+              <th class="d-flex justify-content-center"><%= @user.introduction %></th>
             </tr>
         </tbody>
       </table>
-    </div>
-    <div class="row">
-        <%= link_to "レシピを投稿する", new_recipe_path %>
+      <div class="row">
+        <%= link_to edit_user_path(@user.id), class: "btn btn-outline-info btn-block my-2" do %>
+          <i class="fas fa-user-cog"></i>
+          <span>プロフィール編集</span>
+        <% end %>
       </div>
-  </div>
+      <div class="row">
+        <%= link_to new_recipe_path, class: "btn btn-outline-info btn-block mb-2" do %>
+          <i class="fas fa-utensils"></i>
+          <span>レシピを投稿する</span>
+        <% end %>
+      </div>
+      <!--<div class="row">-->
+        <%#= link_to favorites_path, class: "btn btn-outline-info btn-block" do %>
+      <!--    <i class="fas fa-heart"></i>-->
+      <!--    <span>お気に入り</span>-->
+      <!--  <%# end %>-->
+      <!--</div>-->
 
-  <div class="col-md-8">
-    <h4>マイレシピ</h4>
+    </div>
+    <div class="col-md-8 py-4 mx-4">
+    <h4 class="d-flex justify-content-center">マイレシピ</h4>
     <% @recipes.each do |recipe| %>
     <div>
       <%= link_to recipe_path(recipe.id) do %>
-        <%= image_tag recipe.recipe_image, size: "300x200" %>
-        <%= recipe.name %>
+         <%= image_tag recipe.recipe_image, size: "300x200" %>
+         <span class="ml-5"><%= recipe.name %>
+         </span>
       <% end %>
     </div>
     <% end %>
   </div>
+  </div>
+
+
 </div>

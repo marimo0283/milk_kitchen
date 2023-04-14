@@ -13,6 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import "cocoon";
+import '@fortawesome/fontawesome-free/js/all'
 
 
 Rails.start()
