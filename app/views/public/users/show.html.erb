@@ -4,21 +4,18 @@
       <span><%= image_tag @user.get_profile_image(100,100) %></span>
       <table class="table">
         <tbody>
-    　    　  <tr></tr>
             <tr>
-              <th>name</th>
               <th><%= @user.name %></th>
             </tr>
             <tr>
-              <th>introduction</th>
               <th><%= @user.introduction %></th>
             </tr>
         </tbody>
       </table>
-      <div class="row">
+    </div>
+    <div class="row">
         <%= link_to "レシピを投稿する", new_recipe_path %>
       </div>
-    </div>
   </div>
 
   <div class="col-md-8">
