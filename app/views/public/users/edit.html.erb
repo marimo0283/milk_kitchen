@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <%= form_with model: @user do |f| %>
+    <div class="text-center py-2 my-3">
+      <h3 class="mt-1">プロフィール編集</h3>
+
+      <div class="form-group py-1">
+        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+      </div>
+      <div class="form-group py-1">
+        <label class="control-label mr-1">名前</label>
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+      <div class="form-group py-1">
+        <label class="control-label mr-1">自己紹介</label>
+        <%= f.text_area :introduction, autofocus: true %>
+      </div>
+
+      <div class="actions mt-2">
+        <%= f.submit "編集内容を保存", class: "btn btn-outline-info" %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
