@@ -12,4 +12,8 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to recipe_path(recipe)
   end
+
+  def index
+
+  end
 end
