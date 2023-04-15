@@ -23,6 +23,7 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @ingredients = @recipe.ingredients
     @steps = @recipe.steps
+    @comment = Comment.new
   end
 
   def edit

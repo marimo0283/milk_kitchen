@@ -33,18 +33,28 @@
 
     </div>
     <div class="col-md-7 py-4 mx-4">
-    <h4 class="d-flex justify-content-center">マイレシピ</h4>
-    <% @recipes.each do |recipe| %>
-    <div>
-      <%= link_to recipe_path(recipe.id) do %>
-         <%= image_tag recipe.recipe_image, size: "300x200" %>
-         <span class="ml-5"><%= recipe.name %>
-         </span>
-      <% end %>
-    </div>
+      <h4 class="d-flex justify-content-center">マイレシピ</h4>
+      <% @recipes.each do |recipe| %>
+      <div class="col-auto">
+        <table>
+          <tr>
+            <td rowspan="2">
+              <%= link_to recipe_path(recipe) do %>
+                <%= image_tag recipe.recipe_image, size:"300x300" %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to recipe_path(recipe) do %>
+                <%= recipe.name %>
+              <% end %>
+              </br><%= recipe.introduction %>
+            </td>
+          </tr>
+        </table>
+      </div>
     <% end %>
+    </div>
   </div>
-  </div>
-
-
 </div>
