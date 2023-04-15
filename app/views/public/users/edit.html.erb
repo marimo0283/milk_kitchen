@@ -3,6 +3,16 @@
     <%= form_with model: @user do |f| %>
     <div class="text-center py-2 my-3">
       <h3 class="mt-1">プロフィール編集</h3>
+      <div id="error_explanation">
+          <% if @user.errors.any? %>
+          <h3><%= @user.errors.count %>件のエラーが発生しました</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+          <% end %>
+        </div>
 
       <div class="form-group py-1">
         <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
