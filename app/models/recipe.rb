@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :steps, allow_destroy: true
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_one :category
+  belongs_to :category
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

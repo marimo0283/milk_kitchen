@@ -24,13 +24,13 @@
             <!--会員側がログインしている時 -->
           <% elsif user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Top", root_path, class: "btn btn-outline-light" %>
+              <%= link_to "Top", root_path, class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
               <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
-              <%#= link_to "レシピを見る", recipes_path, class: "btn btn-outline-light ml-3" %>
+              <%= link_to "レシピを見る", recipes_path, class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light ml-3" %>
@@ -42,13 +42,13 @@
             <!--ログインしていない時 -->
           <% else %>
          　  <li class="nav-item">
-              <%= link_to "Top", root_path, class: "btn btn-outline-light" %>
+              <%= link_to "Top", root_path, class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
               <%= link_to "About", about_path, class: 'btn btn-outline-light ml-3' %>
             </li>
             <li class="nav-item">
-              <%#= link_to "レシピを見る", recipes_path, class: 'btn btn-outline-light ml-3' %>
+              <%= link_to "レシピを見る", recipes_path, class: "btn btn-outline-light ml-3" %>
             </li>
             <li class="nav-item">
               <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light ml-3" %>
