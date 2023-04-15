@@ -16,7 +16,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all(recipe_params)
+    @recipes = Recipe.all
   end
 
   def show
