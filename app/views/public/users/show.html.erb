@@ -10,6 +10,22 @@
             <tr>
               <th class="d-flex justify-content-center"><%= @user.introduction %></th>
             </tr>
+            <tr>
+              <th>フォロー</th>
+              <th>
+                <%= link_to user_followings_path(@user.id) do %>
+                  <%= @user.followings.count %>
+                <% end %>
+              </th>
+            </tr>
+            <tr>
+              <th>フォロワー</th>
+              <th>
+                <%= link_to user_followers_path(@user.id) do %>
+                  <%= @user.followers.count %>
+                <% end %>
+              </th>
+            </tr>
         </tbody>
       </table>
       <div class="row">
