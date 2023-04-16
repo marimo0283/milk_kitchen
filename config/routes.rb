@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'public/homes#top'
-  get '/about' => 'public/homes#about', as: "about"
-
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
+  root to: "public/homes#top"
+  get "/about" => "public/homes#about", as: "about"
 
   # 会員用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
   devise_scope :user do
     post "/users/sign_out", to: "devise/sessions#destroy"
@@ -18,8 +13,10 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :recipes, only: [:new, :create, :update, :index, :show, :edit, :destroy] do
+      #検索機能
       collection do
         get "search"
+        get "favorite"
       end
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy, :index]

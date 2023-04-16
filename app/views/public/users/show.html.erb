@@ -48,16 +48,16 @@
           <span>レシピを投稿する</span>
         <% end %>
       </div>
-      <!--<div class="row">-->
-        <%#= link_to _path, class: "btn btn-outline-info btn-block" do %>
-      <!--    <i class="fas fa-heart"></i>-->
-      <!--    <span>お気に入り</span>-->
-      <!--  <%# end %>-->
-      <!--</div>-->
+      <div class="row">
+        <%= link_to favorite_recipes_path, class: "btn btn-outline-info btn-block" do %>
+          <i class="fas fa-heart"></i>
+          <span>お気に入り</span>
+        <% end %>
+      </div>
 
     </div>
     <div class="col-md-7 py-4 mx-4">
-      <h4 class="d-flex justify-content-center">マイレシピ</h4>
+      <h4 class="d-flex justify-content-center"> 投稿したレシピ</h4>
       <% @recipes.each do |recipe| %>
       <div class="col-auto">
         <table>

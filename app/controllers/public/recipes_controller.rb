@@ -46,6 +46,11 @@ class Public::RecipesController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
+  def favorite
+    favorites = Favorite.where(user_id: current_user.id).pluck(:recipe_id)
+    @favorite_list = Recipe.find(favorites)
+  end
+
   private
   def recipe_params
     params.require(:recipe).permit(:name, :introduction, :serving, :recipe_image, :category_id,
