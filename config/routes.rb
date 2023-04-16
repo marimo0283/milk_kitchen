@@ -18,13 +18,16 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :recipes, only: [:new, :create, :update, :index, :show, :edit, :destroy] do
+      collection do
+        get "search"
+      end
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy, :index]
     end
     resources :users, only: [:show, :update, :edit] do
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
     end
   end
 

@@ -1,18 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:top, :about]
+  before_action :set_search
 
-  before_action :set_current_user
-
-  def set_current_user
-    @current_user = User.find_by(id: session[:user_id])
+  def set_search
+    @search = Recipe.ransack(params[:q])
+    @recipes = @search.result
   end
-
-  def create
-    @recipe = Recipe.new(
-    content: params[:content],
-    user_id: @current_user.id
-  )
-  end
-
 
 end
