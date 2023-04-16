@@ -18,6 +18,12 @@ class Public::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @categories = Category.all
+    if params[:category_id].present?
+      #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
+      @category = Category.find(params[:category_id])
+      @recipes = @category.recipes
+    end
   end
 
   def show

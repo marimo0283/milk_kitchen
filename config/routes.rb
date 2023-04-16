@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :recipes, only: [:new, :create, :update, :index, :show, :edit, :destroy] do
-      #検索機能
       collection do
         get "search"
         get "favorite"

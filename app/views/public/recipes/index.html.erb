@@ -4,7 +4,7 @@
       <div class="d-flex item-index-h">
         <h2 class="my-2">みんなのレシピ一覧</h2>
       </div>
-    <% @recipes.each do |recipe| %>
+      <% @recipes.each do |recipe| %>
       <div class="card col-4">
         <div class="card-img-top">
           <%= image_tag recipe.recipe_image, size:"300x300" %>
@@ -16,6 +16,9 @@
         </div>
       </div>
     <% end %>
+    </div>
+    <div class="col">
+      <%= render "/public/recipes/category_search", categories: @categories %>
     </div>
   </div>
 </div>
