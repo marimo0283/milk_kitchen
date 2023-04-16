@@ -1,1 +1,1 @@
-$('#favorite_<%= @recipe.id %>').html("<%= j(render 'favorites/favorite', recipe: @recipe) %>");
+$("#favorite").html("<%= j(render '/public/favorites/favorite', recipe: @recipe) %>");

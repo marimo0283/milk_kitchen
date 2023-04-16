@@ -1,0 +1,10 @@
+<p>コメント数：<%= @recipe.comments.count %></p>
+<% @recipe.comments.each do |comment| %>
+  <p><%= image_tag comment.user.get_profile_image(50,50) %>
+    <%= comment.user.name %>
+  </p>
+  <p><%= comment.comment %>
+  <% if comment.user == current_user %>
+    <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, remote: true, class: "ml-2" %>
+  <% end %>
+<% end %>

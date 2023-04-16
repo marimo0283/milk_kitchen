@@ -71,26 +71,14 @@
       </ul>
     </seciton>
 
-    <div id ="favorite_<%= @recipe.id %>">
+    <div id ="favorite" class="mb-2">
       <%= render "/public/favorites/favorite", recipe: @recipe %>
     </div>
-
-    <div>
-      <p>コメント数：<%= @recipe.comments.count %></p>
-      <% @recipe.comments.each do |comment| %>
-        <p><%= comment.user.name %></p>
-        <p><%= comment.comment %>
-          <% if comment.user == current_user %>
-          <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class: "ml-2" %>
-          <% end %>
-        </p>
-      <% end %>
+    <div id="comments-area">
+      <%= render "/public/comments/comment", recipes: @recipes, comment: @comment %>
     </div>
-    <div>
-      <%= form_with model: [@recipe, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '3', placeholder: "例：簡単に作れました！" %>
-        <%= f.submit "送信", class: "btn btn-info" %>
-      <% end %>
+    <div id="comment-form">
+      <%= render '/public/comments/form', comment: @comment %>
     </div>
     </div>
   </div>
