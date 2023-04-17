@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy, :index]
     end
-    resources :users, only: [:show, :update, :edit] do
+    resources :users, only: [:show, :update, :edit, :destroy] do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"

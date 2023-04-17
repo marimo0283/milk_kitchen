@@ -12,7 +12,7 @@ class User < ApplicationRecord
     end
   end
 
-  has_many :recipes
+  has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   # フォローをした/されたの関係
