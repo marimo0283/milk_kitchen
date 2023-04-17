@@ -1,3 +1,49 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+.cover-img {
+	height: 600px;
+	display: table;
+	width: 100%;
+	background-size: cover;
+  position: relative;
+}
+
+.cover-img p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  font-size: 4rem;
+}
+
+/* ワイドスクリーン用のCSS */
+@media only screen and (min-width: 1500px) {
+	.cover-img {
+		height: 800px;
+	}
+}
+
+/* タブレット用のCSS */
+@media only screen and (min-width : 768px) and (max-width : 1200px) {
+	.cover-img {
+		height: 500px;
+	}
+}
+
+/* スマホ用のCSS */
+@media only screen and (max-width: 479px) {
+	.cover-img {
+		height: 300px;
+	}
+}
+
+.cover-text {
+	display: table-cell;
+	vertical-align: middle;
+  text-align: center;
+}
