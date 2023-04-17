@@ -80,5 +80,14 @@
     <div id="comment-form">
       <%= render '/public/comments/form', comment: @comment %>
     </div>
+    <div>
+      <h6>レシピ作成者</h6>
+      <p>
+        <%= link_to user_path(@recipe.user) do %>
+          <%= image_tag @recipe.user.get_profile_image(50,50) %>
+          <%= @recipe.user.name %>
+        <% end %>
+      </p>
+    </div>
     </div>
   </div>

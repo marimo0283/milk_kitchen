@@ -1,0 +1,20 @@
+<div class="container mt-3 add-font">
+  <div class="row">
+    <div class="col-10 mx-auto">
+    <div class="d-flex align-content-start flex-wrap img-container img">
+     <% @recipes.each do |recipe| %>
+      <div class="col-auto">
+       <%= image_tag recipe.recipe_image, size:"300x300" %>
+       <h4><%= recipe.name %></h4>
+       <p><%= recipe.introduction %></p>
+       <%= link_to "作り方を見る", recipe_path(recipe) %>
+       <%= link_to "レシピ削除", recipe_path(recipe.id), method:  :delete, data: {confirm: "本当に削除しますか？"}, class:  "btn btn-danger" %>
+       <div class="pb-lg-4" ></div>
+      </div>
+     <% end %>
+    </div>
+    <div class="pb-lg-1"></div>
+   </div>
+  </div>
+  </div>
+</div>

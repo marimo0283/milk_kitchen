@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+    resources :recipes, only: [:index, :show, :destroy]
+  end
 end
