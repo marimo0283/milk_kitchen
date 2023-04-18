@@ -20,12 +20,8 @@
       </div>
     </div>
     <section class="cooking_content">
-      <ul class="accordion">
+      <ul class="list-unstyled">
         <li>
-          <h5>
-            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-              作り方を見る
-          </h5>
           <div class="content">
             <div class="row">
               <div class="col-lg-5 col-xs-12">
@@ -53,9 +49,9 @@
               </div>
               <div class="col-lg-7  col-xs-12">
                 <div class="step_list">
-                  <ol>
+                  <ol  class="list-unstyled">
                     <li>
-                      <h5>作り方</h5>
+                      <h5>手順</h5>
                       <% @steps.each do |step| %>
                         <p>
                           <%= step.step_introduction %>
@@ -71,16 +67,16 @@
       </ul>
     </seciton>
 
-    <div id ="favorite" class="mb-2">
+    <div id ="favorite" class="mb-2 p-1">
       <%= render "/public/favorites/favorite", recipe: @recipe %>
     </div>
-    <div id="comments-area">
+    <div id="comments-area" class="p-1">
       <%= render "/public/comments/comment", recipes: @recipes, comment: @comment %>
     </div>
-    <div id="comment-form">
+    <div id="comment-form" class="p-1">
       <%= render '/public/comments/form', comment: @comment %>
     </div>
-    <div>
+    <div class="p-2 mt-2">
       <h6>レシピ作成者</h6>
       <p>
         <%= link_to user_path(@recipe.user) do %>
