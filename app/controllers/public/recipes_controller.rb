@@ -31,6 +31,7 @@ class Public::RecipesController < ApplicationController
     @ingredients = @recipe.ingredients
     @steps = @recipe.steps
     @comment = Comment.new
+    @category = @recipe.category
   end
 
   def edit

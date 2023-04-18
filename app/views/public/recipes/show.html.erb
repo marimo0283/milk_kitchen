@@ -3,6 +3,9 @@
       <div class="col-7 py-4">
         <h4 class="border-bottom mb-2"><%= @recipe.name %></h4>
         <p class="description"><%= @recipe.introduction %></p>
+        <%= link_to recipes_path(category_id: @category.id) do %>
+          <p class="text-secondary"><%= @category.name %></p>
+        <% end %>
         <div class="recipe-image">
           <%= image_tag @recipe.recipe_image, format: 'jpeg', size: "400x300" %>
         </div>
