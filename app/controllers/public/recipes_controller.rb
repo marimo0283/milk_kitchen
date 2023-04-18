@@ -1,4 +1,5 @@
 class Public::RecipesController < ApplicationController
+  before_action :is_matching_recipe_user, only: [:edit, :update]
 
   def new
     @recipe = Recipe.new
@@ -64,6 +65,15 @@ class Public::RecipesController < ApplicationController
     ingredients_attributes: [:id, :recipe_id, :ingredient_name, :amount, :_destroy],
     steps_attributes: [:id, :recipe_id, :step_introduction, :_destroy]
     )
+  end
+
+  def is_matching_recipe_user
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
+    user_id = @recipe.user.id
+    unless user_id == current_user.id
+      redirect_to recipes_path
+    end
   end
 
 end
