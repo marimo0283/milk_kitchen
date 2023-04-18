@@ -6,44 +6,44 @@
 </div>
 
 <div class="row">
-  <div class="mx-auto col-md-12 mt-3">
-    <%= form_with model: @recipe, url: '/recipes', method: :post, local: true do |f| %>
-        <div id="error_explanation">
-          <% if @recipe.errors.any? %>
-          <h3><%= @recipe.errors.count %>件のエラーが発生しました</h3>
-          <ul>
-            <% @recipe.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+  <div class="mx-auto col-md-12 mt-2">
+    <div id="error_explanation">
+      <% if @recipe.errors.any? %>
+      <h3><%= @recipe.errors.count %>件のエラーが発生しました</h3>
+        <ul>
+          <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
           <% end %>
-        </div>
-        <div class="form-group row">
-          <%= f.label "画像", class: "col-form-label" %>
-          <%= f.file_field :recipe_image, accept: "images/*" %>
-        </div>
+        </ul>
+      <% end %>
+    </div>
 
-        <div class="form-group row">
-          <%= f.label "料理名", class: "col-form-label" %>
-          <%= f.text_field :name, class: "form-control col-sm-3" %>
-        </div>
+    <%= form_with model: @recipe, url: '/recipes', method: :post, local: true do |f| %>
+    <table>
+      <tr>
+        <td>画像</td>
+        <td><%= f.file_field :recipe_image, accept: "images/*", class: "p-1" %></td>
+      </tr>
+      <tr>
+        <td>料理名</td>
+        <td><%= f.text_field :name, class: "form-control p-1" %></td>
+      </tr>
+      <tr>
+        <td>説明</td>
+        <td><%= f.text_area :introduction, class: "form-control p-1" %></td>
+      </tr>
+      <tr>
+        <td>カテゴリー</td>
+        <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください", class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td><%= f.number_field :serving, in: 1..100, class: "form-control" %></td>
+        <td>人分</td>
+      </tr>
+    </table>
 
-        <div class="form-group row">
-          <%= f.label "説明", class: "col-form-label" %>
-          <%= f.text_area :introduction, class: "form-control col-sm-3" %>
-        </div>
-
-        <div class="form-group row">
-          <%= f.label "カテゴリー", class: "col-form-label" %>
-          <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください", class: "form-control" %>
-        </div>
-
-        <div class="form-group row">
-          <%= f.number_field :serving, in: 1..100, class: "form-control col-sm-1" %>
-          <%= f.label "人分", class: "col-form-label" %>
-        </div>
-
-        <div class="ingredient">
+        <div class="ingredient mt-3">
+          <h5>材料</h5>
           <table>
           <thead>
             <tr>
@@ -54,26 +54,23 @@
           <tbody>
             <%= f.fields_for :ingredients do |t| %>
             <tr>
-              <td>
-                <%= render "ingredient_fields", f: t %>
-              </td>
+              <td><%= render "ingredient_fields", f: t %></td>
             </tr>
             <% end %>
           </tbody>
           </table>
-          <div class="action">
+          <div class="action mt-2">
             <%= link_to_add_association "追加", f, :ingredients, class: "btn btn-outline-info" %>
           </div>
         </div>
 
-         <div class="step">
+         <div class="step mt-3">
            <h5>調理手順</h5>
            <table>
            <thead>
              <tr>
                <th>番号</th>
                <th>作業</th>
-               <th>&nbsp;</th>
              </tr>
            </thead>
           <tbody>
@@ -84,13 +81,13 @@
             <% end %>
           </tbody>
           </table>
-          <div class="action">
+          <div class="action mt-2">
             <tr><%= link_to_add_association "追加", f, :steps, class: "btn btn-outline-info" %></tr>
           </div>
           </div>
 
-        <div class="action">
-          <%= f.submit "投稿", class: "btn btn-info" %>
+        <div class="action mt-4">
+          <%= f.submit "投稿する", class: "btn btn-info" %>
         </div>
     <% end %>
   </div>
