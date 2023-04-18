@@ -1,21 +1,20 @@
 <div class="container mt-3 add-font">
   <div class="row">
     <div class="col-10 mx-auto">
-      <div class="d-flex item-index-h">
-        <h2 class="">お気に入り一覧</h2>
+      <h4>お気に入り一覧</h4>
+    <div class="d-flex align-content-start flex-wrap img-container img">
+     <% @recipes.each do |recipe| %>
+      <div class="col-auto">
+       <%= image_tag recipe.recipe_image, size:"300x300" %>
+       <h4><%= recipe.name %></h4>
+       <p><%= recipe.introduction %></p>
+       <%= link_to "作り方を見る", recipe_path(recipe) %>
+       <div class="pb-lg-4" ></div>
       </div>
-    <% @recipes.each do |recipe| %>
-      <div class="card">
-        <div class="card-img-top">
-          <%= image_tag recipe.recipe_image, size:"300x300" %>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title"><%= recipe.name %></h4>
-          <p class="card-text"><%= recipe.introduction %></p>
-          <%= link_to "作り方を見る", recipe_path(recipe) %>
-        </div>
-      </div>
-    <% end %>
+     <% end %>
     </div>
+    <div class="pb-lg-1"></div>
+   </div>
+  </div>
   </div>
 </div>

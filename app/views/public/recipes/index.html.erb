@@ -1,5 +1,8 @@
 <div class="container mt-3 add-font">
   <div class="row">
+    <div class="col-2">
+      <%= render "/public/recipes/category_search", categories: @categories %>
+    </div>
     <div class="col-10 mx-auto">
     <div class="d-flex align-content-start flex-wrap img-container img">
      <% @recipes.each do |recipe| %>
@@ -14,12 +17,6 @@
     </div>
     <div class="pb-lg-1"></div>
    </div>
-
   </div>
-
-    <div class="col-2">
-      <%= render "/public/recipes/category_search", categories: @categories %>
-    </div>
-
   </div>
 </div>
