@@ -55,7 +55,10 @@
                   <ol  class="list-unstyled">
                     <li>
                       <h5>手順</h5>
-                      <% @steps.each do |step| %>
+                      <% @steps.each.with_index(1) do |step, idx| %>
+                        <h6>
+                          <%= idx %>
+                        </h6>
                         <p>
                           <%= step.step_introduction %>
                         </p>

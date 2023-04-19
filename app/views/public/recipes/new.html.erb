@@ -22,22 +22,22 @@
     <table>
       <tr>
         <td>画像</td>
-        <td><%= f.file_field :recipe_image, accept: "images/*", class: "p-1" %></td>
+        <td><%= f.file_field :recipe_image, accept: "images/*", class: "m-2" %></td>
       </tr>
       <tr>
         <td>料理名</td>
-        <td><%= f.text_field :name, class: "form-control p-1" %></td>
+        <td><%= f.text_field :name, class: "form-control m-2" %></td>
       </tr>
       <tr>
         <td>説明</td>
-        <td><%= f.text_area :introduction, class: "form-control p-1" %></td>
+        <td><%= f.text_area :introduction, class: "form-control m-2" %></td>
       </tr>
       <tr>
         <td>カテゴリー</td>
-        <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください", class: "form-control" %></td>
+        <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください", class: "form-control m-2" %></td>
       </tr>
       <tr>
-        <td><%= f.number_field :serving, in: 1..100, class: "form-control" %></td>
+        <td><%= f.number_field :serving, in: 1..100, class: "m-2" %></td>
         <td>人分</td>
       </tr>
     </table>
@@ -60,19 +60,20 @@
           </tbody>
           </table>
           <div class="action mt-2">
+
             <%= link_to_add_association "追加", f, :ingredients, class: "btn btn-outline-info" %>
           </div>
         </div>
 
-         <div class="step mt-3">
-           <h5>調理手順</h5>
-           <table>
-           <thead>
-             <tr>
-               <th>番号</th>
-               <th>作業</th>
-             </tr>
-           </thead>
+        <div class="step mt-3">
+          <h5>調理手順</h5>
+          <table>
+          <thead>
+            <tr>
+              <th>番号</th>
+              <th>作業</th>
+            </tr>
+          </thead>
           <tbody>
             <%= f.fields_for :steps do |s| %>
             <tr>

@@ -18,7 +18,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.page(params[:page])
+    @recipes = Recipe.all
     @categories = Category.all
     if params[:category_id].present?
       #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行

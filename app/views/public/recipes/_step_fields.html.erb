@@ -1,7 +1,22 @@
-<div class="nested-fields">
+<div class="nested-fields steps">
+  <td class="ml-2"></td>
   <tr>
-    <td>1</td>
-    <td><%= f.text_area :step_introduction, class: "col-form-label" %></td>
+    <td><%= f.text_area :step_introduction, class: "col-form-label ml-3" %></td>
     <td><%= link_to_remove_association "削除", f , class: "btn btn-outline-info ml-2" %></td>
   </tr>
 </div>
+
+
+<!--手順番号-->
+<script>
+var steps = document.getElementsByClassName("steps")
+
+for(var i =0;i<steps.length; i++) {
+  if(steps[i].childNodes.length === 0) {
+  } else {
+    console.log(steps[i].childNodes)
+    steps[i].childNodes[0].textContent = i + 1
+  }
+
+}
+</script>
