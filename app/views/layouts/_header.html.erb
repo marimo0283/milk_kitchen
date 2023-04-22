@@ -1,4 +1,4 @@
-<header>
+<header class="pc-header">
   <nav class="navbar mr-aut navbar-expand-md" style="background-color: #86AABE;">
     <div class="row w-100 align-items-center mx-5">
       <a class="navbar-brand" href="/">
@@ -67,4 +67,76 @@
       </div>
     </div>
   </nav>
+</header>
+
+
+<header class="sp-header" >
+  <div class="pos-f-t" >
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class=" p-4" style="background-color: #86AABE; ">
+      <ul class="navbar-nav w-100 justify-content-end mx-5">
+
+              <!--管理者側がログインしている時-->
+              <% if admin_signed_in? %>
+                  <li class="nav-item text-right">
+                    <%= link_to "レシピ一覧", admin_recipes_path, class: "btn btn-outline-light" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-light ml-3" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light ml-3" %>
+                  </li>
+
+                <!--会員側がログインしている時 -->
+              <% elsif user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "Top", root_path, class: "btn btn-outline-light ml-3" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-outline-light ml-3" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "レシピを見る", recipes_path, class: "btn btn-outline-light ml-3" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light ml-3" %>
+                </li>
+                <!--検索フォーム-->
+                <li class="nav-item ml-3">
+                  <%= search_form_for @search, url: search_recipes_path, class: "d-flex" do |f| %>
+                    <%= f.search_field :name_cont, class: "form-control mr-2", placeholder: "キーワードを入力" %>
+                    <%= f.submit "検索", class: "btn btn-light" %>
+                  <% end %>
+                </li>
+
+
+                <!--ログインしていない時 -->
+              <% else %>
+             　  <li class="nav-item">
+                  <%= link_to "Top", root_path, class: "btn btn-outline-light ml-3" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "About", about_path, class: 'btn btn-outline-light ml-3' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "レシピを見る", recipes_path, class: "btn btn-outline-light ml-3" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light ml-3" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light ml-3" %>
+                </li>
+              <% end %>
+              </ul>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark" style="background-color: #86AABE;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+
 </header>

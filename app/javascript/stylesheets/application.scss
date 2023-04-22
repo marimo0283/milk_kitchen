@@ -47,3 +47,23 @@
 	vertical-align: middle;
   text-align: center;
 }
+
+.pc-header {
+	display: block;
+}
+
+.sp-header {
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+/* 768pxまでの幅の場合に適応される */
+   
+.pc-header {
+	display: none;
+}
+
+.sp-header {
+	display: block;
+}
+}
