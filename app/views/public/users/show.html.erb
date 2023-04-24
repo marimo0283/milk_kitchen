@@ -45,15 +45,19 @@
         <% end %>
       </div>
       <div class="row">
-        <%= link_to new_recipe_path, class: "btn btn-outline-info btn-block mb-2" do %>
-          <i class="fas fa-utensils"></i>
-          <span>レシピを投稿する</span>
+        <% if @user == current_user %>
+          <%= link_to new_recipe_path, class: "btn btn-outline-info btn-block mb-2" do %>
+            <i class="fas fa-utensils"></i>
+            <span>レシピを投稿する</span>
+          <% end %>
         <% end %>
       </div>
       <div class="row">
-        <%= link_to favorite_recipes_path, class: "btn btn-outline-info btn-block mb-2" do %>
-          <i class="fas fa-heart"></i>
+        <% if @user == current_user %>
+          <%= link_to favorite_recipes_path, class: "btn btn-outline-info btn-block mb-2" do %>
+            <i class="fas fa-heart"></i>
           <span>お気に入り</span>
+          <% end %>
         <% end %>
       </div>
       <div class="row">
@@ -66,7 +70,7 @@
       </div>
 
     </div>
-    <div class="col-md-7 py-4 mx-4">
+    <div class="col-7 py-4 mx-4">
       <h4 class="d-flex justify-content-center"> 投稿したレシピ</h4>
       <% @recipes.each do |recipe| %>
       <div class="col-auto">
@@ -74,7 +78,7 @@
           <tr>
             <td rowspan="2">
               <%= link_to recipe_path(recipe) do %>
-                <%= image_tag recipe.recipe_image.variant(resize: "300x300", gravity: "center", crop: "300x300+0+0") %>
+                <%= image_tag recipe.recipe_image.variant(resize: "200x200^", gravity: "center", crop: "200x200+0+0"), class: "mr-4" %>
               <% end %>
             </td>
           </tr>

@@ -1,14 +1,10 @@
 <div class="container mt-3 add-font">
   <div class="row">
-    <div class="col-10 mx-auto">
-      <div class="d-flex item-index-h">
-        <h2 class="my-2">お気に入り一覧</h2>
-      </div>
     <% if @favorite_list.present? %>
       <% @favorite_list.each do |favorite| %>
-      <div class="card col-4">
+      <div class="card col-3 mr-3 mb-2">
         <div class="card-img-top">
-          <%= image_tag favorite.recipe_image, size:"300x300" %>
+          <%= image_tag favorite.recipe_image.variant(resize: "200x200^", gravity: "center", crop: "200x200+0+0") %>
         </div>
         <div class="card-body">
           <h4 class="card-title"><%= favorite.name %></h4>
@@ -18,6 +14,5 @@
       </div>
       <% end %>
     <% end %>
-    </div>
   </div>
 </div>

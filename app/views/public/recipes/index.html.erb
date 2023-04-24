@@ -3,21 +3,19 @@
     <div class="col-2">
       <%= render "/public/recipes/category_search", categories: @categories %>
     </div>
-    <div class="col-10 mx-auto">
-    <div class="d-flex align-content-start flex-wrap img-container img">
-     <% @recipes.each do |recipe| %>
-      <div class="col-auto">
-        <%= image_tag recipe.recipe_image.variant(resize: "300x300", gravity: "center", crop: "300x300+0+0") %>
-        <h4><%= recipe.name %></h4>
-        <p><%= recipe.introduction %></p>
-        <% if user_signed_in? %>
-          <%= link_to "作り方を見る", recipe_path(recipe) %>
-        <% end %>
-       <div class="pb-lg-4" ></div>
+    <div class="row col-10">
+      <% @recipes.each do |recipe| %>
+      <div class="card col-3 mr-3 mb-2">
+        <div class="card-img-top">
+          <%= image_tag recipe.recipe_image.variant(resize: "200x200^", gravity: "center", crop: "200x200+0+0") %>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><%= recipe.name %></h4>
+          <p class="card-text"><%= recipe.introduction %></p>
+          <%= link_to "作り方を見る", recipe_path(recipe.id) %>
+        </div>
       </div>
-     <% end %>
+      <% end %>
     </div>
-    <div class="pb-lg-1"></div>
-   </div>
   </div>
 </div>
