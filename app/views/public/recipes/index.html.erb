@@ -7,10 +7,12 @@
     <div class="d-flex align-content-start flex-wrap img-container img">
      <% @recipes.each do |recipe| %>
       <div class="col-auto">
-       <%= image_tag recipe.recipe_image, size:"300x300" %>
-       <h4><%= recipe.name %></h4>
-       <p><%= recipe.introduction %></p>
-       <%= link_to "作り方を見る", recipe_path(recipe) %>
+        <%= image_tag recipe.recipe_image, size:"300x300" %>
+        <h4><%= recipe.name %></h4>
+        <p><%= recipe.introduction %></p>
+        <% if user_signed_in? %>
+          <%= link_to "作り方を見る", recipe_path(recipe) %>
+        <% end %>
        <div class="pb-lg-4" ></div>
       </div>
      <% end %>

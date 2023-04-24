@@ -8,7 +8,8 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new
     @ingredients = @recipe.ingredients
     @steps = @recipe.steps
-    
+    @category = @recipe.category
+
     render "public/recipes/show"
   end
 

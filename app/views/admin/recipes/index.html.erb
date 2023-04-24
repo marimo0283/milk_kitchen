@@ -7,8 +7,7 @@
        <%= image_tag recipe.recipe_image, size:"300x300" %>
        <h4><%= recipe.name %></h4>
        <p><%= recipe.introduction %></p>
-       <%= link_to "作り方を見る", recipe_path(recipe) %>
-       <%= link_to "レシピ削除", recipe_path(recipe.id), method:  :delete, data: {confirm: "本当に削除しますか？"}, class:  "btn btn-danger" %>
+       <%= link_to "レシピ削除", admin_recipe_path(recipe.id), method:  :delete, data: {confirm: "本当に削除しますか？"}, class:  "btn btn-danger" %>
        <div class="pb-lg-4" ></div>
       </div>
      <% end %>
