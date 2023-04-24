@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @users = User.all
   end
@@ -6,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to :root
+    redirect_to admin_users_path
   end
 
 end

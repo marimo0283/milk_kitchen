@@ -4,7 +4,6 @@ Admin.create!(
    password: 'admin00'
 )
 
-
 #カテゴリー
 Category.create!([
    {name: '主食'},
