@@ -7,7 +7,7 @@
     <div class="d-flex align-content-start flex-wrap img-container img">
      <% @recipes.each do |recipe| %>
       <div class="col-auto">
-        <%= image_tag recipe.recipe_image, size:"300x300" %>
+        <%= image_tag recipe.recipe_image.variant(resize: "300x300", gravity: "center", crop: "300x300+0+0") %>
         <h4><%= recipe.name %></h4>
         <p><%= recipe.introduction %></p>
         <% if user_signed_in? %>
