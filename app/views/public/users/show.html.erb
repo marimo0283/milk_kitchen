@@ -62,7 +62,7 @@
       </div>
       <div class="row">
         <% if @user == current_user && @user.email != "guest@com" %>
-          <%= link_to user_path(current_user.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: "btn btn-outline-info btn-block mb-2" do %>
+          <%= link_to user_path(current_user.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: "btn btn-outline-info btn-block mb-4" do %>
             <i class="fas fa-user-slash"></i>
             <span>退会</span>
           <% end %>
