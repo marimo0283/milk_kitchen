@@ -20,6 +20,8 @@ Milk Kitchenは、牛乳に特化したレシピサイトです。牛乳を使�
 - 自分の作った料理のレシピを投稿したい時。
 
 ## 設計書
+- 実装機能リスト
+- https://docs.google.com/spreadsheets/d/19uJbRjSKJuQ7IfyT_OfWygf2PYmNG5MjYCqJcNOps0A/edit?usp=sharing
 
 
 ## 開発環境
