@@ -20,7 +20,8 @@ users = User.create!(
     {email: 'tuduki@com', name: '都築', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")},
     {email: 'utumi@com', name: 'ゆき', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename:"sample-user2.png"),
      introduction: 'よろしくお願いします'},
-    {email: 'haruno@com', name: '榛野', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.png"), filename:"sample-user3.png")}
+    {email: 'haruno@com', name: '榛野', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.png"), filename:"sample-user3.png"),
+     introduction: '週１で投稿予定'}
   ]
 )
 
@@ -42,7 +43,7 @@ recipes = Recipe.create!(
 
     {name: 'パンナコッタ',
      recipe_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-recipe6.jpg"), filename:"sample-recipe6.jpg"),
-     introduction: '簡単！',
+     introduction: '簡単にできます',
      serving: '2',
      category_id: 5,
      user_id: users[2].id }
