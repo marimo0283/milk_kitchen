@@ -22,13 +22,11 @@
           <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </tr>
       </table>
-  <div class="actions my-3">
-    <%= f.submit "新規登録", class: "btn btn-outline-info" %>
-  </div>
-<% end %>
-<span>会員登録がお済みの方は<%= render "public/shared/links" %></span>
-</div>
-
-
+      <div class="actions my-3">
+        <%= f.submit "新規登録", class: "btn btn-outline-info" %>
+      </div>
+      <span>会員登録がお済みの方は<%= render "public/shared/links" %></span>
+    </div>
+    <% end %>
   </div>
 </div>

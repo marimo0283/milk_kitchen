@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :recipes, only: [:new, :create, :update, :index, :show, :edit, :destroy] do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
       collection do
         get "search"
         get "favorite"
       end
-      resources :comments, only: [:create, :destroy]
-      resource :favorites, only: [:create, :destroy]
     end
     resources :users, only: [:show, :update, :edit, :destroy] do
       resource :relationships, only: [:create, :destroy]

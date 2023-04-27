@@ -1,84 +1,87 @@
 <div class="container">
   <div class="row">
-      <div class="col-7 py-4">
-        <h4 class="border-bottom mb-2"><%= @recipe.name %></h4>
-        <p class="description"><%= @recipe.introduction %></p>
-        <%= link_to recipes_path(category_id: @category.id) do %>
-          <p class="text-secondary"><%= @category.name %></p>
-        <% end %>
-        <div class="recipe-image">
-          <%= image_tag @recipe.recipe_image.variant(resize: "350x350", gravity: "center", crop: "400x400+0+0") %>
-        </div>
-      </div>
-      <div class="col-5 py-4">
-        <% if user_signed_in? %>
-          <% if current_user.id != @recipe.user.id %>
-          <% else %>
-            <div class="recipe-btn mt-4">
-              <%= link_to "レシピ編集", edit_recipe_path(@recipe.id), id:"recipe-edit", class: "btn btn-warning" %>
-              <%= link_to "レシピ削除", recipe_path(@recipe.id), method:  :delete, data: {confirm: "本当に削除しますか？"}, class:  "btn btn-danger" %>
-            </div>
-          <% end %>
-        <% end %>
+    <div class="col-7 py-4">
+      <h4 class="border-bottom mb-2"><%= @recipe.name %></h4>
+      <p class="description"><%= @recipe.introduction %></p>
+      <%= link_to recipes_path(category_id: @category.id) do %>
+        <p class="text-secondary"><%= @category.name %></p>
+      <% end %>
+      <div class="recipe-image">
+        <%= image_tag @recipe.recipe_image.variant(resize: "350x350", gravity: "center", crop: "400x400+0+0") %>
       </div>
     </div>
-    <section class="cooking_content">
-      <ul class="list-unstyled">
-        <li>
-          <div class="content">
-            <div class="row">
-              <div class="col-lg-5 col-xs-12">
-                <div class="ingredient_list">
-                  <h5 class="item-title">
-                    材料(<%= @recipe.serving %>人分)
-                  </h5>
-                  <div class="ingredient_table">
-                    <table class="table table-inverse">
-                      <tbody>
-                        <% @ingredients.each do |ingredient| %>
-                          <tr>
-                            <td>
-                              <%= ingredient.ingredient_name %>
-                            </td>
-                            <td>
-                              <%= ingredient.amount %>
-                            </td>
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                  </div>
+    <div class="col-5 py-4">
+      <% if user_signed_in? %>
+        <% if current_user.id != @recipe.user.id %>
+        <% else %>
+          <div class="recipe-btn mt-4">
+            <%= link_to "レシピ編集", edit_recipe_path(@recipe.id), id:"recipe-edit", class: "btn btn-warning" %>
+            <%= link_to "レシピ削除", recipe_path(@recipe.id), method:  :delete, data: {confirm: "本当に削除しますか？"}, class:  "btn btn-danger" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <section class="cooking_content">
+    <ul class="list-unstyled">
+      <li>
+        <div class="content">
+          <div class="row">
+            <div class="col-lg-5 col-xs-12">
+              <div class="ingredient_list">
+                <h5 class="item-title">
+                  材料(<%= @recipe.serving %>人分)
+                </h5>
+                <div class="ingredient_table">
+                  <table class="table table-inverse">
+                    <tbody>
+                      <% @ingredients.each do |ingredient| %>
+                        <tr>
+                          <td>
+                            <%= ingredient.ingredient_name %>
+                          </td>
+                          <td>
+                            <%= ingredient.amount %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-              <div class="col-lg-7  col-xs-12">
-                <div class="step_list">
-                  <ol  class="list-unstyled">
-                    <li>
-                      <h5>手順</h5>
-                      <% @steps.each.with_index(1) do |step, idx| %>
-                        <h6>
-                          <%= idx %>
-                        </h6>
-                        <p>
-                          <%= step.step_introduction %>
-                        </p>
-                      <% end %>
-                    </li>
-                  </ol>
-                </div>
+            </div>
+            <div class="col-lg-7  col-xs-12">
+              <div class="step_list">
+                <ol  class="list-unstyled">
+                  <li>
+                    <h5>手順</h5>
+                    <% @steps.each.with_index(1) do |step, idx| %>
+                      <h6>
+                        <%= idx %>
+                      </h6>
+                      <p>
+                        <%= step.step_introduction %>
+                      </p>
+                    <% end %>
+                  </li>
+                </ol>
               </div>
             </div>
           </div>
-        </li>
-      </ul>
-    </seciton>
+        </div>
+      </li>
+    </ul>
+  </seciton>
 
+    <!--いいねボタン-->
     <div id ="favorite" class="mb-2 p-1">
       <%= render "/public/favorites/favorite", recipe: @recipe %>
     </div>
+    <!--コメント表示-->
     <div id="comments-area" class="p-1">
       <%= render "/public/comments/comment", recipes: @recipes, comment: @comment %>
     </div>
+    <!--コメントフォーム-->
     <div id="comment-form" class="p-1">
       <%= render '/public/comments/form', comment: @comment %>
     </div>
@@ -91,5 +94,5 @@
         <% end %>
       </p>
     </div>
-    </div>
   </div>
+</div>

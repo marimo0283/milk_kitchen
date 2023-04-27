@@ -1,5 +1,5 @@
 <div class="p-2">
   <% categories.each do |category| %>
-  <p><%= link_to category.name, recipes_path(category_id: category.id), class: "text-secondary" %></p>
+    <p><%= link_to category.name, recipes_path(category_id: category.id), class: "text-secondary" %></p>
   <% end %>
 </div>

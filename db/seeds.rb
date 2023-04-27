@@ -18,7 +18,8 @@ Category.create!([
 users = User.create!(
   [
     {email: 'tuduki@com', name: '都築', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")},
-    {email: 'utumi@com', name: 'ゆき', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename:"sample-user2.png")},
+    {email: 'utumi@com', name: 'ゆき', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename:"sample-user2.png"),
+     introduction: 'よろしくお願いします'},
     {email: 'haruno@com', name: '榛野', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.png"), filename:"sample-user3.png")}
   ]
 )

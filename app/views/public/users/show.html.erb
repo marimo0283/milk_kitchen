@@ -6,28 +6,28 @@
       </span>
       <table class="table">
         <tbody>
-            <tr>
-              <th class="d-flex justify-content-center"><%= @user.name %></th>
-            </tr>
-            <tr>
-              <th class="d-flex justify-content-center"><%= @user.introduction %></th>
-            </tr>
-            <tr>
-              <th>フォロー</th>
-              <th>
-                <%= link_to user_followings_path(@user.id) do %>
-                  <%= @user.followings.count %>
-                <% end %>
-              </th>
-            </tr>
-            <tr>
-              <th>フォロワー</th>
-              <th>
-                <%= link_to user_followers_path(@user.id) do %>
-                  <%= @user.followers.count %>
-                <% end %>
-              </th>
-            </tr>
+          <tr>
+            <th class="d-flex justify-content-center"><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th class="d-flex justify-content-center"><%= @user.introduction %></th>
+          </tr>
+          <tr>
+            <th>フォロー</th>
+            <th>
+              <%= link_to user_followings_path(@user.id) do %>
+                <%= @user.followings.count %>
+              <% end %>
+            </th>
+          </tr>
+          <tr>
+            <th>フォロワー</th>
+            <th>
+              <%= link_to user_followers_path(@user.id) do %>
+                <%= @user.followers.count %>
+              <% end %>
+            </th>
+          </tr>
         </tbody>
       </table>
       <div class="row">
@@ -69,12 +69,14 @@
         <% end %>
       </div>
       <div class="row">
-        <%= search_form_for @search_user, url: search_users_path, class: "d-flex" do |f| %>
-          <%= f.search_field :name_cont, class: "form-control mr-2", placeholder: "ユーザー検索" %>
-          <%= button_tag type: 'submit', class: "btn btn-outline-secondary" do %>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg>
+        <% if @user == current_user %>
+          <%= search_form_for @search_user, url: search_users_path, class: "d-flex" do |f| %>
+            <%= f.search_field :name_cont, class: "form-control mr-2", placeholder: "ユーザー検索" %>
+            <%= button_tag type: 'submit', class: "btn btn-outline-secondary" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -102,7 +104,7 @@
           </tr>
         </table>
       </div>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>

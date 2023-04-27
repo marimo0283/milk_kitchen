@@ -1,73 +1,72 @@
 <div class="container">
-<div class="row">
-  <div class="col">
-    <h4 class="p-3 mb-2text-dark">レシピを投稿する</h4>
-  </div>
-</div>
-
-<div class="row">
-  <div class="mx-auto col-md-12 mt-2">
-    <div id="error_explanation">
-      <% if @recipe.errors.any? %>
-      <h3><%= @recipe.errors.count %>件のエラーが発生しました</h3>
-        <ul>
-          <% @recipe.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+  <div class="row">
+    <div class="col">
+      <h4 class="p-3 mb-2text-dark">レシピを投稿する</h4>
     </div>
+  </div>
 
-    <%= form_with model: @recipe, url: '/recipes', method: :post, local: true do |f| %>
-    <table>
-      <tr>
-        <td>画像</td>
-        <td><%= f.file_field :recipe_image, accept: "images/*", class: "m-2" %></td>
-      </tr>
-      <tr>
-        <td>料理名</td>
-        <td><%= f.text_field :name, class: "form-control m-2" %></td>
-      </tr>
-      <tr>
-        <td>説明</td>
-        <td><%= f.text_area :introduction, placeholder: "紹介、ポイントなど", class: "form-control m-2" %></td>
-      </tr>
-      <tr>
-        <td>カテゴリー</td>
-        <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください", class: "form-control m-2" %></td>
-      </tr>
-      <tr>
-        <td><%= f.number_field :serving, in: 1..100, class: "m-2" %></td>
-        <td>人分</td>
-      </tr>
-    </table>
-
-        <div class="ingredient mt-3">
-          <h5>材料</h5>
-          <table>
-          <thead>
-            <tr>
-              <th>材料</th>
-              <th>分量</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= f.fields_for :ingredients do |t| %>
-            <tr>
-              <td><%= render "ingredient_fields", f: t %></td>
-            </tr>
+  <div class="row">
+    <div class="mx-auto col-md-12 mt-2">
+      <div id="error_explanation">
+        <% if @recipe.errors.any? %>
+        <h3><%= @recipe.errors.count %>件のエラーが発生しました</h3>
+          <ul>
+            <% @recipe.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
             <% end %>
-          </tbody>
-          </table>
-          <div class="action mt-2">
+          </ul>
+        <% end %>
+      </div>
 
-            <%= link_to_add_association "追加", f, :ingredients, class: "btn btn-outline-info" %>
-          </div>
+      <%= form_with model: @recipe, url: '/recipes', method: :post, local: true do |f| %>
+      <table>
+        <tr>
+          <td>画像</td>
+          <td><%= f.file_field :recipe_image, accept: "images/*", class: "m-2" %></td>
+        </tr>
+        <tr>
+          <td>料理名</td>
+          <td><%= f.text_field :name, class: "form-control m-2" %></td>
+        </tr>
+        <tr>
+          <td>説明</td>
+          <td><%= f.text_area :introduction, placeholder: "紹介、ポイントなど", class: "form-control m-2" %></td>
+        </tr>
+        <tr>
+          <td>カテゴリー</td>
+          <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください", class: "form-control m-2" %></td>
+        </tr>
+        <tr>
+          <td><%= f.number_field :serving, in: 1..100, class: "m-2" %></td>
+          <td>人分</td>
+        </tr>
+      </table>
+
+      <div class="ingredient mt-3">
+        <h5>材料</h5>
+        <table>
+        <thead>
+          <tr>
+            <th>材料</th>
+            <th>分量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :ingredients do |t| %>
+          <tr>
+            <td><%= render "ingredient_fields", f: t %></td>
+          </tr>
+          <% end %>
+        </tbody>
+        </table>
+        <div class="action mt-2">
+          <%= link_to_add_association "追加", f, :ingredients, class: "btn btn-outline-info" %>
         </div>
+      </div>
 
-        <div class="step mt-3">
-          <h5>調理手順</h5>
-          <table>
+      <div class="step mt-3">
+        <h5>調理手順</h5>
+        <table>
           <thead>
             <tr>
               <th>作業</th>
@@ -80,16 +79,16 @@
             </tr>
             <% end %>
           </tbody>
-          </table>
-          <div class="action mt-2">
-            <tr><%= link_to_add_association "追加", f, :steps, class: "btn btn-outline-info" %></tr>
-          </div>
-          </div>
-
-        <div class="action mt-4">
-          <%= f.submit "投稿する", class: "btn btn-info" %>
+        </table>
+        <div class="action mt-2">
+          <tr><%= link_to_add_association "追加", f, :steps, class: "btn btn-outline-info" %></tr>
         </div>
-    <% end %>
+      </div>
+
+      <div class="action mt-4">
+        <%= f.submit "投稿する", class: "btn btn-info" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>
