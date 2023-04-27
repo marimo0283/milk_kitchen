@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Recipe.ransack(params[:q])
     @recipes = @search.result
+
+    @search_user = User.ransack(params[:q])
+    @users = @search_user.result
   end
 
   protected

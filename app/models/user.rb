@@ -49,4 +49,9 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  #ユーザー検索用
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "email", "encrypted_password", "id", "introduction", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
+  end
 end

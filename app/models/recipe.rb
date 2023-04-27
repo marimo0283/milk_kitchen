@@ -19,6 +19,7 @@ class Recipe < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #検索用
   def self.ransackable_attributes(auth_object = nil)
     ["category_id", "created_at", "id", "introduction", "name", "serving", "updated_at", "user_id"]
   end
