@@ -1,11 +1,23 @@
 ja:
   activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+    models:
+      recipe: レシピ
+      recipe/ingredient: 材料
+      recipe/step: 調理手順
+    attributes:
+      user:
+        name: 名前
+      recipe:
+        name: レシピ名
+        introduction: 説明文
+        serving: 人数
+        recipe_image: レシピ写真
+        category: カテゴリー
+      recipe/ingredients:
+        ingredient_name: 材料名
+        amount: 分量
+      recipe/steps:
+        step_introduction: 手順
   date:
     abbr_day_names:
     - 日

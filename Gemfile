@@ -58,6 +58,7 @@ gem 'devise'
 gem 'cocoon'
 gem 'ransack'
 gem 'kaminari','~> 1.2.1'
+gem 'rails-i18n'
 
 #デプロイ用
 gem 'dotenv-rails'
