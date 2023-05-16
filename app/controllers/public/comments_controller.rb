@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+  before_action :is_matching_comment_user, only: [:destroy]
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
@@ -23,6 +24,14 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def is_matching_comment_user
+    @comment = Comment.find(params[:id])
+    user = @comment.user
+    unless user.id == current_user.id
+      redirect_to recipes_path
+    end
   end
 
 end

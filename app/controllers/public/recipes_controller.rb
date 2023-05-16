@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
-  before_action :is_matching_recipe_user, only: [:edit, :update]
+  before_action :is_matching_recipe_user, only: [:edit, :update, :destroy]
 
   def new
     @recipe = Recipe.new
