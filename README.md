@@ -21,11 +21,14 @@ Milk Kitchenは、牛乳に特化したレシピサイトです。牛乳を使�
 
 ## 設計書
 - 実装機能リスト
-- https://docs.google.com/spreadsheets/d/19uJbRjSKJuQ7IfyT_OfWygf2PYmNG5MjYCqJcNOps0A/edit?usp=sharing
 
+https://docs.google.com/spreadsheets/d/19uJbRjSKJuQ7IfyT_OfWygf2PYmNG5MjYCqJcNOps0A/edit?usp=sharing
+- 詳細設計
+
+https://docs.google.com/spreadsheets/d/1_uOoKBPkWvFyG2bchg78NTiMx_kMp57r/edit?usp=sharing&ouid=102374369912354934746&rtpof=true&sd=true
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux()
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery

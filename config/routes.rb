@@ -36,6 +36,6 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     resources :users, only: [:index, :destroy]
-    resources :recipes, only: [:index, :show, :destroy]
+    resources :recipes, only: [:index, :destroy]
   end
 end
