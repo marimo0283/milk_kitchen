@@ -1,6 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+.about {
+	color: #5997BC;
+}
 .cover-img {
 	height: 600px;
 	display: table;
@@ -58,7 +61,7 @@
 
 @media screen and (max-width: 768px) {
 /* 768pxまでの幅の場合に適応される */
-   
+
 .pc-header {
 	display: none;
 }
