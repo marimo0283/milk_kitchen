@@ -34,6 +34,7 @@ https://docs.google.com/spreadsheets/d/1_uOoKBPkWvFyG2bchg78NTiMx_kMp57r/edit?us
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
--
+## サイトURL
+http://52.194.151.239/
+
 
