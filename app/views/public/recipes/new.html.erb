@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="p-3 mb-2 text-dark border-bottom">レシピを投稿する</h4>
+      <h4 class="mt-4 text-dark border-bottom">レシピを投稿する</h4>
     </div>
   </div>
 
   <div class="row">
-    <div class="mx-auto col-md-12 mt-2">
+    <div class="mx-auto col-md-12">
       <div id="error_explanation">
         <% if @recipe.errors.any? %>
         <h3><%= @recipe.errors.count %>件のエラーが発生しました</h3>
