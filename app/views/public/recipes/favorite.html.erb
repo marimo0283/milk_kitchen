@@ -2,7 +2,7 @@
   <div class="row">
     <% if @favorite_list.present? %>
       <% @favorite_list.each do |favorite| %>
-      <div class="card col-3 mr-3 mb-2">
+      <div class="card col-lg-3 col-xs-12 mr-3 mb-2">
         <div class="card-img-top">
           <%= image_tag favorite.recipe_image.variant(resize: "200x200^", gravity: "center", crop: "200x200+0+0") %>
         </div>
